@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+sudo systemctl restart mariadb
+sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysqlrp}';"
+sudo mysql -u root -p"${mysqlrp}" -e "FLUSH PRIVILEGES;"
+sudo mysql -u root -p"${mysqlrp}" -e "create database ${db_name}"
+sudo mysql -u root -p"${mysqlrp}" -e "create user '${db_user}'@'%' IDENTIFIED BY '${db_pass}';"
+sudo mysql -u root -p"${mysqlrp}" -e "grant all on ${db_name}.* TO '${db_user}'@'%';"
+sudo mysql -u root -p"${mysqlrp}" -e "FLUSH PRIVILEGES;"
