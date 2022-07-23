@@ -3,11 +3,11 @@ output "bastion-public-ip" {
 }
 
 output "frontend-public-ip" {
-  value = aws_instance.bastion.public_ip
+  value = aws_instance.frontend.public_ip
 }
 
 output "frontend-private-ip" {
-  value = aws_instance.bastion.private_ip
+  value = aws_instance.frontend.private_ip
 }
 
 output "backend-private-ip" {
